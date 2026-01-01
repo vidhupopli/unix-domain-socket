@@ -8,6 +8,8 @@
 
 ## Mental Model
 
+![UNIX Domain Socket communication flow](images/image.png)
+
 - So the way UNIX Domain Socket communication works is that there is a client process and server process.
 - The server process is going to make the `socket` system call with relevant arguments to specify that it wants to open up a UNIX Domain Socket not IP Socket. It also specifies the orthognal type of socket, example in our case and most common `SOCK_STREAM`. There is also datgram socket where in the communication isn't supposed ot be continuous.
 - Alright so what happens when the server makes the `socket` call is that Kernel sets up a socket object in its memory space. Then it creates a new entry on the FD Table of the server process and points it to the socket object which has been created. The `socket` call returns the FD Integer value of the new entry.
